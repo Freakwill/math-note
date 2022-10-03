@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://test.org/society.owl"
+         xmlns="http://test.org/society.owl#">
+
+<owl:Ontology rdf:about="http://test.org/society.owl"/>
+
+<owl:Class rdf:about="#Cat">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf>
+    <owl:Class>
+      <owl:oneOf>
+        <rdf:Description>
+          <rdf:first rdf:resource="#cc"/>
+          <rdf:rest>
+            <rdf:Description>
+              <rdf:first rdf:resource="#c"/>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+          </rdf:rest>
+        </rdf:Description>
+      </owl:oneOf>
+    </owl:Class>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#love"/>
+      <owl:allValuesFrom>
+        <owl:Class>
+          <owl:oneOf>
+            <rdf:Description>
+              <rdf:first rdf:resource="#cc"/>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+          </owl:oneOf>
+        </owl:Class>
+      </owl:allValuesFrom>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:ObjectProperty rdf:about="#love">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ReflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Cat"/>
+  <rdfs:range rdf:resource="#Cat"/>
+</owl:ObjectProperty>
+
+<Cat rdf:about="#c">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#love"/>
+      <owl:allValuesFrom>
+        <owl:Class>
+          <owl:oneOf>
+            <rdf:Description>
+              <rdf:first rdf:resource="#cc"/>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+          </owl:oneOf>
+        </owl:Class>
+      </owl:allValuesFrom>
+    </owl:Restriction>
+  </rdf:type>
+  <love rdf:resource="#cc"/>
+</Cat>
+
+<Cat rdf:about="#cc">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#love"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    </owl:Restriction>
+  </rdf:type>
+</Cat>
+
+
+</rdf:RDF>

@@ -1,0 +1,122 @@
+\documentclass[11pt,a4paper,fleqn]{article}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{analysis, algebra}%mypackage
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{graphicx,subfigure,float}
+\usepackage{fancyhdr,times}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+%\usepackage{cite}
+\usepackage[numbers,sort&compress]{natbib}
+
+\hypersetup{
+   colorlinks=true,%
+   citecolor=green,%
+   filecolor=black,%
+   linkcolor=black,%
+   urlcolor=blue
+} % 打印的时候注释
+
+\begin{document}
+
+\renewcommand{\S}{\mathscr{S}}                       %
+\renewcommand{\d}{\mathrm{d}}                          %
+\renewcommand{\i}{\mathrm{i}}                          %
+\newcommand{\ei}[1]{\mathrm{e}^{\mathrm{i}#1}}              %
+%\newcommand{\biggnorm}[1]{\bigg\|#1\bigg\|}                    %%norm
+\newcommand{\gen}[1]{\langle#1\rangle}                                    %
+\newcommand{\fix}{\mathrm{fix}}                               %           %
+\newcommand{\Frac}{\mathrm{Frac}}                               %       %                              %
+\newcommand{\Rxt}{{\textbf{Rxt}}}
+\newcommand{\Fxt}{{\textbf{Fxt}}}                               %
+\newcommand{\Fld}{{\textbf{Fld}}}                              %
+\newcommand{\Dom}{{\textbf{Dom}}}                              %
+\newcommand{\Prm}{\mathrm{P}}
+
+\newcommand{\irr}{\mathrm{irr}}
+
+\newenvironment{proof}{\emph{Proof.}\hspace{0.5cm}}{$\hspace{0.4cm}\Box$\\}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+
+%\footnotetext
+\bibliographystyle{plain}  % 按插入顺序排列
+
+
+\title{Fild Theory}
+\date{}
+\author{S. William}
+\maketitle
+
+\section{Basic Concepts}
+A field extension $E/F$ just means a field $E$ and a subfield $F$, like the ring extension. In fact field extension (\Fxt) can be regarded as a sub-category of ring extension (\Rxt). The field extension lies at the heart of field theory, and is crucial to many other algebraic domains. $F(S)$ denotes the minimal field containing a (finite) set $S$ and the field $E$. The elements in $F(S)$ are called rational functions of $F$, since they have the form $\frac{f}{g}$ where $f,g\in F[S]$. Hence $F(S)=\Frac(F[S])$. Similarly, we have the field of formal power series denoted with $F((S))=\Frac(F[[S]])$. This field is actually the ring of Laurent series over the field $E$.
+
+Consider field extension $E/F$. A simple extension field of $F$ is $F(x)$ the minimal subfield of $F$ containing $E$ and $x\in E$. Such extensions are also called simple extensions.
+
+\begin{definition}
+ In the field extension $E/F$, $\alpha\in E $ is an algebraic element if $\alpha$ is a root of a (non-zero) polynomial $f(x)\in F[x]$. Otherwise it is a transcendental element. $E/F$ is an algebraic extension if all elements in $E$ are algebraic elements. Otherwise it is transcendental extension.
+\end{definition}
+
+For an algebraic element $\alpha\neq0$, there exist an ideal of $F[x]$ consists of polynomials that $f(\alpha)=0$ named annihilation polynomials of $\alpha$. The ideal must be $I_\alpha=(p(x))$ where the monic polynomial $p(x)$ is named minimal polynomial sometimes denoted as $\irr_E(a)$. Obviously, $p(x)$ is unique and irreducible. In ring extension, we do not have such polynomial necessarily.
+\begin{theorem}\label{th:at}
+  If $\alpha$ is an algebraic element of $E/F$, then $F(\alpha)=F[\alpha]\simeq F[x]/(p(x))$ where $p(x)$ is the minimal polynomial of $\alpha$, else if it is a transcendental element, then $F(\alpha)=\Frac(F[\alpha])\simeq F(x)$.
+\end{theorem}
+\begin{proof}
+  Let assignment map $\phi(f(x))=f(\alpha)$ that is a homomorphism from $F[x]$ to $F[\alpha]$.
+\end{proof}
+
+A field with no nontrivial algebraic extensions is called algebraically closed. An example is the field $\C$ of complex numbers. Every field has an algebraic extension which is algebraically closed (called its algebraic closure), for example $\C/\R$. (see the integral closure in ring theory)
+
+Now we show the basic theorem for simply algebraic extension.
+\begin{theorem}[Simply algebraic extension I]\label{th:saxt}
+  Given a field $F$, and $p(x)\in F[x]$ is an $n$-monic irreducible polynomial. Let quotient ring $E=K[x]/(p(x))$ that is indeed a field and $\alpha=x+(p(x))$. We have that
+  \begin{enumerate}[1)]
+    \item
+    algebraic extension $E/F=F(\alpha)/F$,
+    \item
+    $p(x)$ is the minimal polynomial of $\alpha$ and $(p(x))$ consists of the annihilation polynomials of $\alpha$,
+    \item
+    $E$ is regarded as a $F$-vector space with dimension $n$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{example}
+  $\C=\R[x]/(x^2+1),\C/\R$. Denoting $x+(x^2+1)$ with $i$, we have $\C=R(i)$.
+\end{example}
+
+The following result can be regarded as the inverse of Theorem \ref{th:saxt}.
+\begin{theorem}[Simply algebraic extension II]
+  Given a field extension $E/F$ and an algebraic element $\alpha$, namely $F(\alpha)/F$ is an algebraic extension, then
+  \begin{enumerate}[1)]
+    \item
+     there exists a minimal polynomial $p(x)$ (uniquely) of $\alpha$ as mentioned above,
+    \item
+    if $\beta$ is another root of $p(x)$, then there exists an isomorphism $\theta:F(\alpha)\rightarrow F(\beta)$ preserving $K$ and mapping $\alpha$ to $\beta$.
+  \end{enumerate}
+\end{theorem}
+
+\section{Splitting Field}
+Before we introduce the splitting fields, we show the following basic result due to Kronecker.
+\begin{theorem}[Kronecker theorem]\label{th:kron}
+  If $F$ is a field and $f(x)\in F[x]$, then there is a field extension $E/F$ that $f(x)$ can be written as the product of the linear polynomials of $E[x]$.
+\end{theorem}
+
+\begin{definition}
+Given field extension $E/F$ and $f(x)\neq0\in F[x]$. $f(x)$ is split on $E$, if
+\[f(x)=a(x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_n),a\neq0,\]
+where $\alpha_1,\alpha_2,\cdots,\alpha_n\in E$. A subfield $K$ of $E$ is the splitting field of $f(x)$, if it is the minimal subfield of $E$ where $f(x)$ is split.
+\end{definition}
+
+Theorem \ref{th:kron} says there exists a splitting field for any $f(x)\in F[x]$, denoted as $F(\alpha_1,\alpha_2,\cdots,\alpha_n)$ where $\alpha_1,\alpha_2,\cdots,\alpha_n$ are the root of $f(x)$. The splitting field for a set of polynomials is defined in the expected way. It can be shown that such splitting fields exist and are unique up to isomorphism. When we analyse a polynomial $f(x)$ on a field $F$, we usually give the splitting field at first.
+
+\bibliographystyle{unsrturl} % Style BST file
+\bibliography{refer}      % Bibliography file (usually '*.bib' )
+\end{document}

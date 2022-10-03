@@ -1,0 +1,35 @@
+%!TEX program = xelatex
+\documentclass[11pt,a4paper,fleqn]{article}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{indentfirst}
+\begin{document}
+\title{笔记}
+%\footnotetext
+\author{宋丛威}
+
+\maketitle
+
+\newcommand{\tr}{\mathrm{tr}}               %%trace
+
+
+%\noindent
+
+\section{Gateaux derivative}
+\[\sigma_2(A):=\frac{1}{2}(\tr^2(A)-\tr(A^2)).\]
+
+$f(A)=\sigma_2(A^{-1}),A>0$的导数如下($X$对称)
+\begin{eqnarray*}
+& &df(A)(X)= -\tr(A^{-1})\tr(A^{-2}X)+\tr(A^{-3}X);\\
+& &d^2f(A)(X,X)=\tr^2(A^{-2}X)+2\tr(A^{-1})\tr(A^{-3}X)-3\tr(A^{-4}X).
+\end{eqnarray*}
+
+$f(A)=A^{-1}$的导数如下
+\begin{eqnarray*}
+& &df(A)(X)= -A^{-1}XA^{-1};\\
+& &d^2f(A)(X,Y)=A^{-1}XA^{-1}YA^{-1}+A^{-1}YA^{-1}XA^{-1}.
+\end{eqnarray*}
+
+\end{document}

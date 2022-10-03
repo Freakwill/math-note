@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://test.org/algebra.owl"
+         xmlns="http://test.org/algebra.owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+<owl:Ontology rdf:about="http://test.org/algebra.owl"/>
+
+<owl:Class rdf:about="#Statement">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Element">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:ObjectProperty rdf:about="#unaryOperation">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Element"/>
+  <rdfs:range rdf:resource="#Element"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#binaryOperation">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Element"/>
+  <rdfs:range rdf:resource="#unaryOperation"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#AlgebraSystem">
+  <rdfs:subClassOf rdf:resource="#Statement"/>
+</owl:Class>
+
+<owl:ObjectProperty rdf:about="#Mapping">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Element"/>
+  <rdfs:range rdf:resource="#Element"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#SemiGroup">
+  <rdfs:subClassOf rdf:resource="#AlgebraSystem"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Group">
+  <rdfs:subClassOf rdf:resource="#SemiGroup"/>
+</owl:Class>
+
+<owl:ObjectProperty rdf:about="#inverse">
+  <rdfs:subPropertyOf rdf:resource="#unaryOperation"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#multiple">
+  <rdfs:subPropertyOf rdf:resource="#binaryOperation"/>
+</owl:DatatypeProperty>
+
+<SemiGroup rdf:about="#word">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</SemiGroup>
+
+<Element rdf:about="#x">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Element>
+
+<Element rdf:about="#y">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Element>
+
+
+</rdf:RDF>

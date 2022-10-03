@@ -1,0 +1,107 @@
+\documentclass[11pt,a4paper,fleqn]{article}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{analysis, algebra}%mypackage
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{graphicx,subfigure,float}
+\usepackage{fancyhdr,times}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+%\usepackage{cite}
+\usepackage[numbers,sort&compress]{natbib}
+
+\hypersetup{
+   colorlinks=true,%
+   citecolor=green,%
+   filecolor=black,%
+   linkcolor=black,%
+   urlcolor=blue
+} %
+
+\begin{document}
+
+\renewcommand{\S}{\mathscr{S}}                       %
+\renewcommand{\d}{\mathrm{d}}                          %
+\renewcommand{\i}{\mathrm{i}}                          %
+\newcommand{\ei}[1]{\mathrm{e}^{\mathrm{i}#1}}              %
+\newcommand{\id}{\mathrm{id}}                    %%norm
+\newcommand{\gen}[1]{\langle#1\rangle}                                    %
+\newcommand{\fix}{\mathrm{fix}}                               %  
+\newcommand{\Her}{\mathrm{Her}}                               %       %
+\newcommand{\map}{\rightarrow}                               % %
+\newcommand{\Rxt}{{\textbf{Rxt}}}                              %
+\newcommand{\Fld}{{\textbf{Fld}}}                              %
+\newcommand{\Dom}{{\textbf{Dom}}}                              %
+\renewcommand{\M}{{\mathrm{M}}}
+\newcommand{\Prm}{{\mathrm{P}}}
+\newcommand{\TopRing}{{\mathrm{TopRing}}}
+
+\newenvironment{proof}{\emph{Proof.}\hspace{0.5cm}}{$\hspace{0.4cm}\Box$\\}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+
+%\footnotetext
+\bibliographystyle{plain}  % ∞¥≤Â»ÎÀ≥–Ú≈≈¡–
+
+
+\title{Topological Ring Theory}
+\date{}
+\author{S. William}
+\maketitle
+
+\section{Basic Concepts}
+We show the definition of topological rings.
+\begin{definition}[Topological Ring]\label{df:topring}
+A ring $R$ with a topological structure is a topological ring if the operators $-, *:R\times R\to R$ are continuous. It is separated, when its topology is separated (Hausdorff space).
+\end{definition}
+
+We show some obvious facts.
+\begin{fact}
+\begin{enumerate}
+ \item
+$R$ is an Abelian group with $+$;
+ \item
+ A subring $M$ and quotient ring $R/J$ of $R$ is also topological rings with topological structure inherited from $R$; $R/J$ is separated iff $J$ is closed;
+ \item
+ The closure $\bar{M}$ of a subring $M$ is also a topological ring. A direct product of topological rings is a topological ring in a natural way;
+ \item For a separated ring, we define completion $\tilde{R}$ (also separated) of $R$ regarding $R$ as a uniform space. And we have an extension $\tilde{R}/R$.
+\end{enumerate}
+\end{fact}
+
+
+\begin{example}
+$\R$ is a topological ring (complete, separated), and $\R=\tilde{\Q}$. So $\C$ is.
+\end{example}
+
+
+\begin{example}
+$\R^{n\times n}$ is a topological ring (complete, separated). So $\C^{n\times n}$ is.
+\end{example}
+
+
+\begin{definition}[$J$-adic topology]
+ $J$ is an ideal of a communative tring $R$, then set $\{J^m, m\in\N\}$ forms a fundamental system of neighbourhoods of 0 that generates so-called $J$-adic topology. It is separated if $\bigcap_mJ^m=\{0\}$.
+ \end{definition}
+
+\begin{example}
+ The $p$-adic topology on the integers is an example of an $(p)$-adic topology.
+\end{example}
+
+
+ $\TopRing$ denotes the category of topological rings with continuous homomorphisms as its morphisms.
+
+ \section{Top on Homomorphism}
+
+Homomorphism set $\Hom(R,S)$ is a ring, $\phi\psi(a)=\phi(a)\psi(a),(\phi+\psi)(a)=\phi(a)+\psi(a)$.
+Let $M(A,V)=\set{\phi\in\Hom(R,S)}{\phi[A]\subset V}$. If $A\in\mathcal{G},V\in\mathcal{B}$, then $M(A,V)$ form a top basis of $\Hom(R,S)$, where $\mathcal{G}$ is directed (e.g. $\mathcal{G}=\mathcal{K}$). Therefore, $\Hom(R,S)$ is a top ring.
+
+\bibliographystyle{unsrturl} % Style BST file
+\bibliography{refer}      % Bibliography file (usually '*.bib' )
+\end{document}

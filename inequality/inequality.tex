@@ -1,0 +1,261 @@
+\def\CTeXPreproc{Created by ctex v0.2.13, don't edit!}
+\documentclass[11pt,a4paper,fleqn]{article}
+\usepackage{mathrsfs,amsfonts,amsmath, amssymb}
+\usepackage{analysis,logic}%mypackage
+
+\usepackage{enumerate}
+\usepackage{graphicx,subfigure,float}
+\usepackage{fancyhdr,times}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+%\usepackage{cite}
+\usepackage[numbers,sort&compress]{natbib}
+
+\hypersetup{
+   colorlinks=true,%
+   citecolor=green,%
+   filecolor=black,%
+   linkcolor=black,%
+   urlcolor=blue
+} % 打印的时候注释
+
+\begin{document}
+
+\renewcommand{\S}{\mathscr{S}}                       % {x_n}
+\renewcommand{\d}{\mathrm{d}}                          %
+\renewcommand{\i}{\mathrm{i}}                          %
+\renewcommand{\l}{\ell^1}
+\newcommand{\ei}[1]{\mathrm{e}^{\mathrm{i}#1}}
+\newcommand{\e}[1]{\mathrm{e}^{2\pi\mathrm{i}#1}}
+\newcommand{\ec}[1]{\mathrm{e}^{-2\pi\mathrm{i}#1}}              %
+\newcommand{\Mx}[2]{M^{s}_{p,q}}                         % 建议使用
+%\newcommand{\biggnorm}[1]{\bigg\|#1\bigg\|}                    %%norm
+%\newcommand{\bignorm}[1]{\big\|#1\big\|}                                    %
+\newcommand{\fix}{\mathrm{fix}}                               %
+\renewcommand{\MM}{\mathfrak{M}}
+
+\newenvironment{proof}{\emph{Proof.}\hspace{0.5cm}}{$\hspace{0.4cm}\Box$\\}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+
+%\footnotetext
+\bibliographystyle{plain}  % 按插入顺序排列
+
+
+\title{Inequalities}
+\date{}
+\author{S. William}
+\maketitle
+
+
+\section{Analysis 1}
+\begin{lemma}[Triebel]\label{lm:triebel}If $f\in \S_\Omega$, then there exist $\phi\in \S_{\Omega'},\Omega\subset \Omega'$ that ${D^\alpha f}= f\ast \phi$, so
+\[{D^\alpha f}\leq C |f|\ast \jb{x}^{-N}\]
+where $\Omega,\Omega'$ are compact and $C$ depends on the size of $\Omega$. ($N$ can be chosen arbitrarily large)
+\end{lemma}
+
+The proof is based on ``the $\S_\Omega$-inserting method".
+
+\begin{proof}
+  Notice $f=\iF(\F f\F g),g\in \S_{\Omega'}$ and $g=1$ on $\Omega$. Let $ \phi=D^\alpha g$, then $D^\alpha f=\iF(\F f\F \phi)$.
+\end{proof}
+
+Assume $\Omega$ is a compact subset of $\R^n$, with diameter $R$.
+\begin{lemma}[Nikol'skij-Triebel]\label{lm:nikolskij}If $f\in L^p_\Omega,0<p\leq q\leq \infty$, then
+\[\norm{f}_{L^q} \leq C\norm{f}_{L^p}\]
+where $C\sim R^{n(\inv{p}-\inv{q})}$.
+\end{lemma}
+
+Following inequality is an analogue of Young's inequality.
+\begin{theorem}If $f,g\in L^p_\Omega,0<p\leq 1$, then
+\[\norm{f\ast g}_{L^q} \leq C\norm{f}_{L^p}\norm{g}_{L^p}\]
+where $C\sim R^{n(\inv{p}-1)}$.
+\end{theorem}
+\begin{proof}Let $h_x(y)=f(y)g(x-y)$ with support $\Omega'$ such that $|\Omega'|\sim|\Omega|$. Then with Lemma \ref{lm:nikolskij}, we have $f\ast g(x)=\norm{h_x}_1\leq \norm{h_x}_p$, namely
+  \[|f\ast g(x)|^p\lesssim C|f|^p\ast|g|^p\]
+  where $C\sim R^{n(\inv{p}-1)}$. Integrate two side to obtain the inequality.
+\end{proof}
+
+\begin{lemma}[Soblev type inequality]Assume (polynomial) $P(\xi)^{-1}\in L^p$,
+\[\norm{f}_{\F L^r} \lesssim \norm{P(D)f}_{L^q}\]
+where $\inv{r}=\inv{p}-\inv{q}+1,1\leq q\leq2,r,p\geq1$.
+\end{lemma}
+\begin{proof}Apply Holder inequality to
+  \[f(x)=P^{-1}(x)P(x)f(x).\]
+  Then use Yang-Hausdorff inequality.
+\end{proof}
+
+As an example, $P(x)=\jb{x}^{d},d>\frac{n}{p}$, i.e. $H^{d,q}\embed \F L^r$.
+
+\begin{corollary}(case $q=1$)
+\[\norm{f}_{\F L^p} \lesssim \norm{P(D)f}_{L^1}\]
+where $P(\xi)^{-1}\in L^p,p\geq1$.
+\end{corollary}
+
+Define the smoothness degree of $X$ under one-parameter group $\R^{+}$,
+\[\deg(X)=s, \text{ for $f\neq0$, }\norm{(\lambda)f}\sim \lambda^s.\]
+\begin{lemma}
+  If normed spaces $X\embed Y$, then $\deg(X)\geq\deg(Y)$.
+\end{lemma}
+Generally,
+ \begin{lemma}
+  If normed spaces $X\embed Y$, then $\norm{(\lambda)}_X\gtrsim\norm{(\lambda)}_Y$.
+\end{lemma}
+Note $\norm{(\lambda)}_X\sim\lambda^{\deg(X)}$ if $\deg(X)$ exists. The optimal $s_1,s_2$ such that $\lambda^{s_1}\lesssim\norm{(\lambda)}\lesssim\lambda^{s_2},\lambda\geq1$ are named the lower smoothness degree ($\deg^-(X)$) and upper smoothness degree ($\deg^+(X)$) respectively.
+ \begin{lemma}
+  If normed spaces $X\embed Y$, then $\deg^+(X)\geq\deg^-(Y)$.
+\end{lemma}
+The default one-parameter group is $(\lambda)f=f({\lambda}{\cdot})$ for function spaces.
+
+\section{Analysis 2}
+Bootstrap principle (continuity method): In connected space $X$, if subset $A\neq\emptyset$ is open and closed, then $A=X$.
+
+\begin{example}
+    If $f\in C(X),f(x_0)=0$, $\{f=0\}$ is open, then $f=0$.
+\end{example}
+
+\begin{lemma}[Gap principle 1]
+Let $f(x)\in C(\Omega),f(x_0)<\epsilon (>\epsilon)$ where $\Omega$ is a connected space. If $f(x)<\epsilon$ or $>\epsilon$ for all $x\in \Omega$, then $f(x)<\epsilon (>\epsilon)$ for all $x\in\Omega$.
+\end{lemma}
+
+\begin{proof}
+    $\{f<\epsilon\}=\{f\leq\epsilon\}$.
+\end{proof}
+
+We say $\epsilon$ is a gap of $f$. Moreover, if any $\epsilon>0$ can be a gap of $f$, then $f=0$.
+
+\begin{lemma}[Gap principle 2]
+Let $f(x)\in C(\Omega),|f(x_0)|<\epsilon$ where $\Omega$ is a connected space. Whenever $|f(x)|\leq\epsilon$ where $\epsilon>0$, $|f(x)|\leq\epsilon$ for all $x\in\Omega$. Then $|f(x)|\leq\epsilon,\forall x\in\Omega$.
+\end{lemma}
+
+\begin{lemma}[Gap principle 3]
+Let $f(x)\in C(\Omega),|f(x_0)|<\epsilon$ where $\Omega$ is a connected space. Whenever $|f(x)|\leq\eta(\epsilon)$ where $\epsilon>0$ and $\eta(x)>x, \forall x>0$, $|f(x)|\leq\epsilon$ for all $x\in\Omega$. Then $|f(x)|\leq\epsilon,\forall x\in\Omega$.
+\end{lemma}
+
+$(\epsilon, \eta(\epsilon)]$ is an impenetrable barrier of $f$.
+
+\begin{corollary}[Terence's Bootstrap principle]
+Let $f(x)\in C^+(\Omega)$ where $\Omega$ is a connected space. $f(x)\leq H(f(x_0)) +\eta(f(x))$, for all $x\in\Omega$ where $\eta(x)=o(x), H(x)\to 0, x\to 0, H(0)=0$. We have
+\begin{enumerate}[1)]
+    \item $\forall (\sml) \epsilon>0\exists (\sml)\delta>0, f(x_0)<\delta\to f\leq \epsilon$; ($f(x_0)\neq 0$)
+    \item if $f(x_0)\ll 1$, then $f$ is bounded;
+    \item if $f(x_0)=0$, then $f=0$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}Select small $\epsilon>0$ and $f(x)\leq\epsilon$.
+    Let $f(x_0)=\delta>0$ that $H(\delta)<\frac{\epsilon}{2}$.
+    \begin{align*}
+        f(x)&\leq H(f(x_0))+\eta(f(x))\\
+        &\leq \frac{\epsilon}{2}+o(\epsilon)<\epsilon.
+    \end{align*}
+\end{proof}
+
+\begin{example}
+    It holds when $f(x)\lesssim f(x_0)^\beta+f(x)^\alpha,\alpha>1,\beta>0$.
+\end{example}
+
+Following is an important application of bootstrap principle.
+\begin{proposition}
+$V\in C^2(\R^n), V(0)= V'(0)=0,H_V>0$. $\sml u_0,u_1\in\R^n\exists! u:\R\to\R^n$ is the bounded solution to the Cauchy problem
+\[u''(t)=V'(u(t)), u(0)=u_0,u'(0)=u_1.\]    
+\end{proposition}
+
+\begin{proof}
+  $f(t)=\norm{u'(t)}^2+\norm{u(t)}^2$. We have $f(t)\lesssim f(0) + f(t)^3$.
+\end{proof}
+
+\begin{theorem}[Acausal Gronwall inequality]
+Assume that the measurable function $K'(t,s)$ satisfies that
+\[\left\{
+    \begin{array}{l}
+K'(t,s)K'(s,r)\leq K'(t,r),K'(t,s)\geq0,K'(t,t)=1,\\
+      \sup_t\int K(t,s)K'(t,s)^{-1}\d s<C, \sup_{s} K'(t,s)\phi(s)\text{ is locally bounded}. \\
+    \end{array}\right.
+\]
+If $\left\{\begin{array}{l}
+  u\leq A+\epsilon\int K(t,s)u(s)\d s, \\
+  u\leq \phi,
+\end{array}\right.$ then $u\leq \sup_s K'(t,s)A(s)$,
+where $\epsilon\ll 1$ depends on $K,K'$.
+\end{theorem}
+\begin{proof}
+  Let the auxiliary function $B(t)=\sup_sK'(t,s)(A(s)+\sigma\phi(s))$, we have
+  \begin{eqnarray*}
+    B(t)&\geq& A(t)+\sigma\phi(t)\, (\geq\sigma u(t)),\\
+    B(s)&\leq &K'(t,s)^{-1}B(t).
+  \end{eqnarray*}
+Assume $u(t)\leq M B(t)$ for smallest $M>0$, then
+    \begin{eqnarray*}
+    u(t)&\leq& A(t)+\int K(t,s)u(s)\d s\\
+        &\leq &B(t)+\epsilon M\int K(t,s)K'(t,s)^{-1}B(t)\d s\\
+        &\leq &B(t)+\inv{2}M B(t).
+  \end{eqnarray*}
+  Thus $M\leq 1+\inv{2}M$, namely $M\leq2$. In a word, we have $u(t)\leq 2B(t)$. It follows that
+  \[u(t)\leq 2\sup_s K'(t,s)A(s),\]
+  since $\sigma$ is arbitrarily small.
+\end{proof}
+
+It is trivial to replace $u\leq \psi$ with $u\lesssim\phi$.
+
+\begin{corollary}[Acausal Gronwall inequality (convolution type)]
+Assume that the measurable function $K'(t)$ satisfies that
+\[\left\{
+    \begin{array}{l}
+K'(s)K'(t)\leq K'(s+t),K'(t)\geq0,K'(0)=1,\\
+      \sup_t\int K(t-s)K'(t-s)^{-1}\d s<C, \sup_{s} K'(t-s)\phi(s)\text{ is locally bounded}. \\
+    \end{array}\right.
+\]
+If $\left\{\begin{array}{l}
+  u\leq A+\epsilon\int K(t-s)u(s)\d s, \\
+  u\leq \phi,
+\end{array}\right.$ then $u\leq \sup_s K'(t-s)A(s)$,
+where $\epsilon\ll 1$ depends on $K,K'$.
+\end{corollary}
+
+\begin{example}
+  $k(t)=e^{\alpha t}\wedge e^{-\beta t},k'(t)=e^{\alpha' t}\wedge e^{-\beta' t},0<\alpha'<\alpha,0<\beta'<\beta$.
+\end{example}
+
+\section{Elementary}
+\begin{lemma}In norm space, we have
+\[|x-x_1|+|x-x_2|\gtrsim |x|+1, x_1\neq x_2.\]
+The implicit constant depends on $x_1,x_2$
+\end{lemma}
+\begin{proof}
+  Consider it on two parts $|x|<C,|x|\geq C$.
+\end{proof}
+
+\section{Operator}
+\begin{lemma}
+In a Banach space $X$,
+  If $S\in \mathcal{G}(X)$, then
+  \[\frac{\norm{T}}{\norm{S^{-1}}}\leq\norm{TS},\norm{ST}\leq\norm{T}\norm{S}.\]
+  If $\norm{S^{-1}}=\norm{S}=1$, then $\norm{TS}=\norm{ST}=\norm{T}$.
+\end{lemma}
+
+\section{Lattice theory}
+
+\begin{theorem}[Gronwall]Let $G_f:=\{x\in L | x\leq f(x)\}$ where $L$ is a completed lattice and $f$ is order
+preserving, then there exists unique
+\[m=\sup G_f\in \fix(f)\subseteq G_f\]
+and
+\[\fix(f)=\{m\}\Rightarrow G_f\leq m.\]
+\end{theorem}
+\begin{proof}
+  For any poset $(L,\leq)$, we have the following facts,
+  \begin{enumerate}[i)]
+    \item
+    $x\in G_f \Rightarrow x\leq f(x)\leq \cdots \leq f^{(n)}(x)\leq \cdots\in G_f$,
+    \item
+    $m=\sup G_f \Rightarrow m\in\fix(f)\subseteq G_f$.
+  \end{enumerate}
+Let $(x)_f=\{x,f(x),\cdots\}$ that is contained in $G_f$ when $x\in G_f$.
+\end{proof}
+\end{document}

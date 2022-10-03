@@ -1,0 +1,199 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{analysis, algebra, logic}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+theorems-ams-extended
+theorems-named
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Variational Geometry
+\end_layout
+
+\begin_layout Standard
+Assume 
+\begin_inset Formula $X$
+\end_inset
+
+ is a tvs.
+\end_layout
+
+\begin_layout Definition*
+[tangent cone, norm cone] # 
+\begin_inset Formula $C$
+\end_inset
+
+ is a cone in 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+R_{C}(x_{0}) & :=\bigcap_{x\in C,\lambda>0}\lambda(x-x_{0})\\
+T_{C}(x_{0}) & :=\overline{R_{C}(x_{0})}\\
+N_{C}(x_{0}) & :=\{f\in X^{*},f(x-x_{0})\leq0,\forall x\in C\}=T_{C}(x_{0})^{_{*}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+when 
+\begin_inset Formula $C\subset X$
+\end_inset
+
+, then 
+\begin_inset Formula $w\in T_{C}(x_{0})\iff w=0orx_{n}\to x,\dir{x-x_{0}}\to w.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $w\in T^{i}(x_{0})\iff\exists f:[0,0+]\to C,f(0)=x,f'(0+)=w.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{C}(x_{0})=\limsup_{\tau}\frac{C-x_{0}}{\tau},T_{C}^{i}(x_{0})=\liminf_{\tau}\frac{C-x_{0}}{\tau}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+[Regularity normal vector] # 
+\begin_inset Formula $x_{0}\in C\subset X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Formula $v\in\hat{N}_{C}(x_{0})\iff\forall x\in Cv(x-x_{0})\leq o(\norm{x-x_{0}})\iff\limsup_{x\to x_{0}}\frac{{v(x-x_{0})}}{x-x_{0}}\leq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Formula $v\in N_{C}(x_{0})\iff x_{n}\to x,v_{n}\in\hat{N}_{C}(x_{n})\to v$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition*
+[Clarke regularity]
+\end_layout
+
+\begin_layout Definition*
+\begin_inset Formula $C$
+\end_inset
+
+ is regular at 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+, if 
+\begin_inset Formula $C$
+\end_inset
+
+ is l.c.
+ and 
+\begin_inset Formula $N_{C}(x_{0})=\hat{N}_{C}(x_{0})$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

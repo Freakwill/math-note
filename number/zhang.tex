@@ -1,0 +1,98 @@
+\documentclass[11pt,a4paper,fleqn]{article}
+\usepackage{mathrsfs,amsfonts,amsmath, amssymb}
+\usepackage{analysis}%mypackage
+\usepackage{logic}
+
+\usepackage{enumerate}
+\usepackage{graphicx,subfigure,float}
+\usepackage{fancyhdr,times}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+%\usepackage{cite}
+\usepackage[numbers,sort&compress]{natbib}
+
+\hypersetup{
+   colorlinks=true,%
+   citecolor=green,%
+   filecolor=black,%
+   linkcolor=black,%
+   urlcolor=blue
+} % 
+
+
+\newcommand{\ned}{\not|}
+
+\newenvironment{proof}{\emph{Proof.}\hspace{0.5cm}}{$\hspace{0.4cm}\Box$\\}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+
+%\footnotetext
+\bibliographystyle{plain}  % °´²åÈëË³ÐòÅÅÁÐ
+
+
+\begin{document}
+\title{Report of Zhang Yitang}
+\date{}
+\author{S. William}
+\maketitle
+
+
+Let $P$ be the set of all prime numbers.
+\begin{definition}
+  $\{h_i,i=1,\cdots, k\}\subset\N$ is admissible iff
+  \[\forall p\in P\exists n\in\N, (P(n)=\prod_i(h_i+n),p)=1 ~ (p\ned h_i+n,i=1,\cdots, k).\]
+\end{definition}
+
+\begin{example}
+ $\{0,2\},\{0,2,6\}$ is admissible. $\{h,h+1\},\{h,h+2,h+4\}$ is not admissible.
+\end{example}
+
+\begin{lemma}
+  $\{h_i,i=1,\cdots k\}\subset\N$ is admissible if
+  \[\exists^\infty n, h_i+n\in P,i=1,\cdots, k.\]
+\end{lemma}
+
+\begin{conjecture}[Hardy-Littlewood Conjecture]
+ If $\{h_i,i=1,\cdots k\}\subset\N$ is admissible, then
+  \[\exists^\infty n, h_i+n\in P,i=1,\cdots, k.\]
+\end{conjecture}
+
+\begin{theorem}\label{th:zhang}
+  If $\{h_i,i=1,\cdots k\}\subset\N$ is admissible, then
+  \[\lrg k \exists^\infty n \exists^2 i, h_i+n\in P,i=1,\cdots, k.\]
+\end{theorem}
+
+\begin{proof}
+  Use Lemma \ref{lm:zhang}.
+\end{proof}
+
+\begin{definition}Define an arithmetic function
+  $\theta(x)=\begin{cases}
+    \ln x, & x\in P,\\
+    0, & x\not\in P.
+  \end{cases}$
+\end{definition}
+
+\begin{lemma}\label{lm:zhang}
+For large $x$,
+  \[\exists n\sim x (x\leq n< 2x),\sum_i\theta(n+h_i) > \ln 3x.\]
+\end{lemma}
+\begin{proof}
+  Let $f(n)\geq 0$. 引入$S_1=\sum_{n\sim x}f(n),S_1=\sum_{n\sim x}(\sum_i\theta(n+h_i))f(n)$. Only need prove
+  \[S_2-S_1\ln 3x >0.\]
+  Let $D=x^c,c\in(0,\inv{2})$. Choose $f(n)=\lambda(n)^2$, where
+  \[\lambda(n)=\sum_{d|P(n)}\mu(d)g(d),g(d)=\begin{cases}
+  \inv{(k+l)!}(\ln\frac{D}{d})^{k+l}, & d<D,\\
+  0, & d\geq D,
+  \end{cases}l>0.\]
+
+GPY gave $S_1\sim T_1x, S_2\sim T_2 x\ln x+O(E)$,
+  \[T_1=\sum_{d_0d_1d_2}\frac{\mu(d_1d_2)g(d_0d_1d_2)}{d_0d_1d_2}g(d_0d_1)g(d_0d_2), T_2=\cdots.\]
+\end{proof}
+
+\end{document}

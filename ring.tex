@@ -1,0 +1,274 @@
+\documentclass[11pt,a4paper,fleqn]{article}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{analysis, algebra}%mypackage
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{graphicx,subfigure,float}
+\usepackage{fancyhdr,times}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+%\usepackage{cite}
+\usepackage[numbers,sort&compress]{natbib}
+
+\hypersetup{
+   colorlinks=true,%
+   citecolor=green,%
+   filecolor=black,%
+   linkcolor=black,%
+   urlcolor=blue
+} %
+
+\begin{document}
+
+\renewcommand{\S}{\mathscr{S}}                       %
+\renewcommand{\d}{\mathrm{d}}                          %
+\renewcommand{\i}{\mathrm{i}}                          %
+\newcommand{\ei}[1]{\mathrm{e}^{\mathrm{i}#1}}              %
+\newcommand{\id}{\mathrm{id}}                    %%norm
+\newcommand{\gen}[1]{\langle#1\rangle}                                    %
+\newcommand{\fix}{\mathrm{fix}}                               %  
+\newcommand{\Her}{\mathrm{Her}}                               %       %
+\newcommand{\map}{\rightarrow}                               % %
+\newcommand{\Rxt}{{\textbf{Rxt}}}                              %
+\newcommand{\Fld}{{\textbf{Fld}}}                              %
+\newcommand{\Dom}{{\textbf{Dom}}}                              %
+\renewcommand{\M}{{\mathrm{M}}}
+\newcommand{\Prm}{{\mathrm{P}}}
+
+\newenvironment{proof}{\emph{Proof.}\hspace{0.5cm}}{$\hspace{0.4cm}\Box$\\}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+
+%\footnotetext
+\bibliographystyle{plain}  % ∞¥≤Â»ÎÀ≥–Ú≈≈¡–
+
+
+\title{Ring Theory}
+\date{}
+\author{S. William}
+\maketitle
+
+\section{Basic Concepts}
+We show the definition of general rings.
+\begin{definition}[Ring]\label{df:ring}
+A ring $R$ is an Abelian group with $+$ and zero $0$, together with another binary operation $*$ such that for all $a, b,c \in R$,
+\begin{enumerate}[1)]
+  \item
+  a *(b*c) = (a*b) * c
+  \item
+  a * (b+c) = (a*b) + (a*c)
+  \item
+  (a+b) * c = (a*c) + (b*c)
+\end{enumerate}
+As usual, we denote $ab=a*b$.
+\end{definition}
+
+It is easy to see $0a=a$. The identity of a ring is denoted always with $1$ (or $1_R$ for emphasizing the ring), that $1a=a1=a$. A ring with $1$ is called a unitary ring, but we are used to saying ring has $1$. Moreover, an integer $n$ in a ring means $\overbrace{1+1+ \cdots +1}^n$.
+\begin{remark}[Rng and Ring]\label{rm:rng}We claim that rings must have $1\neq0$.
+   A ring unnecessarily possessing $1$ should be called a rng (or rong) that will be used in the ideal theory. A rng can be embedded into a ring. Let $R$ be a rng and $R'=\{(r,n),r\in R,n\in\Z\}$ with the multiplication $(r,m)(s,n)=(rs+ms+nr,mn)$, then $R'$ is a ring with the identity $(0,1)$ and $R\subset R'$ up to isomorphism. $\Rng$ and $\Ring$ denote the category of rngs and the category of rings respectively and $R\mapsto R'$ is the functor.
+
+   Ring is a (not full) sub-category of Rng. The homomorphisms of Ring are homomorphisms of Rng mapping 1 in a ring to 1 in another ring.
+\end{remark}
+
+\begin{remark}
+  More general then ring is so-called semiring where $(R,+)$ is a commutative semigroup (or monoid) in Definition \ref{df:ring}. $\N$ is a semiring.
+\end{remark}
+
+Left (right) zero divisors are the elements that $ax = 0$ ($xa = 0$) for some $x\neq0$. $0$ is a trivial zero divisor. Zero divisors are both left and right zero divisors. $1$ is not a zero divisor.
+\begin{definition} A commutative ring $R$ is a ring that $ab=ba$ for all $a,b\in R$. A domain $R$ is a commutative ring that has no zero divisors.
+\end{definition}
+
+\begin{example}
+Integer ring $\Z$ is most common number ring as well as $\Z_n$. Other number rings $\Q,\R,\C$ are fields. Set of $n\times n$ complex matrices $\C^{n\times n}$ is a ring.
+Based on a given ring $R$, we can construct new rings. $\M_n(R)$ is the matrix ring on $R$, $R[x]$ is the polynomial ring, $R[x,x^{-1}]$ is the Laurent polynomial ring, $R[[x]]$ is the ring of formal series, direct sum of rings is a ring and $R^X$ the set of $R$-valued functions is also a ring. Set of sequences $\{x_\lambda\in R\}$ is a ring. If $S$ is a monoid, then $RS$ is the monoid ring.
+\end{example}
+
+In the following discussion, rings are commutative.
+\begin{definition} In a ring $R$, if there is some $c\in R$ that $b=ca$, then $a$ divides exactly $b$, denoted with $a\mid b$. $a$ is called the divisor of $b$. The set of divisors of $b$ is denoted with $D(b)$. $a$ divides properly $b$, if $a\mid b$ but $b\nmid a$.
+\end{definition}
+
+\begin{definition}[Unit in ring] A unit in $R$ is an invertible element that for some $c\in R,1=ca$ or $a\mid 1$. $U(R)$ denotes the set (group) of units in $R$. $a$ associates with $b$, denoted as $a\sim b$, means for some $c\in U(R)$ that $a=cb$, namely $a\mid b$ and $b\mid a$. Thus $a\in U(R)$ iff $a\sim 1$.
+\end{definition}
+
+Obviously, $a\mid b$ is a po and $a\sim b$ is an equivalent relation.
+
+Note that $a$ divides properly $b$ means for some $c\not\in U(R)$ that $a=cb$, also say $b$ is a proper divisor of $a$. The set of proper divisors of $a$ is denoted as $D^*(a)$. For convenience, sometimes $D(S)$ refers to the common divisors of the set $S$. Moreover, unites and elements associating $a$ must divides $a$, that are called ordinary divisors, while others called inordinacy divisors denoted with $D^+(a)$.
+
+\begin{definition} $p$ is a prime element of $R$, if it is not zero or a unit and if $p\mid ab$ for some $a,b\in R$, then $p\mid a$ or $p\mid b$.
+\end{definition}
+If $D^\sharp(a)$ denotes the set of prime divisors or $a$, then $D^\sharp(a)\cup D^\sharp(b)=D^\sharp(ab)$.
+
+\begin{definition} $p$ is an irreducible element of $R$, denoted $p\in\Irr(R)$, if $p$ cannot be written as an product of elements $\prod_ia_i$ that $a_i\mid p$ properly. Simply speaking, if $p=ab$, then $a\sim p$ (meanwhile $b\in U(R)$) or $b\sim p$ (meanwhile $a\in U(R)$), namely $p$ only has ordinary divisors, write $D(p)=pU(R)\cup U(R)$.
+\end{definition}
+
+In an integral domain (domain for short), every prime is irreducible but the converse is not true in general. However, in unique factorization domains, or more generally in GCD domains, primes and irreducibles are the same.
+
+In commutative rings, we have
+Euclidean domain $\Rightarrow$ principal ideal domain $\Rightarrow$ unique factorization domain $\Rightarrow$ GCD domain $\Rightarrow$ Schreier domain $\Rightarrow$ (integral) domain. principal ideal domain $\Rightarrow$ B\'{e}zout domain $\Rightarrow$ GCD domain.
+
+\begin{definition}[Unique Factorization Domain]
+ a unique factorization domain (UFD) is a commutative ring in which every non-zero non-unit element can be written as a product of irreducible elements (prime elements), uniquely up to order and units.
+ \end{definition}
+
+\begin{lemma}
+  If $R$ is a domain, then it is a unique factorization domain iff it is factorized and the irreducible elements $\Irr(R)$ are prime. Note that a ring is factorized if every non-zero non-unit element can be decomposed into the product of irreducible elements.
+\end{lemma}
+
+\begin{lemma}
+In UFDs, $D^\sharp(a)\cap D^\sharp(b)=\emptyset$ iff $a,b$ are coprime.
+\end{lemma}
+
+\begin{definition}[Division Ring and Field]A ring is a division ring, if all elements are unites except $0$. If it is as well as commutative, then it is a field.
+\end{definition}
+
+\section{Ideal and Quotient Ring}
+Ideal may be the most important concept in the ring theory.
+\begin{definition}Given $I$ a left (right) ideal of a general ring $R$, if it is a sub-rng of $R$ and $RI\subset R$ ($IR\subset I$). An (two-sided) ideal is a both left and right ideal.
+\end{definition}
+
+Thus, a left (right) ideal can be seen as an invariant sub-rng under the left (right) multiplication.
+
+We introduce some simple kinds of ideals.
+\begin{definition}
+Generated ideal by $S$, $(S)=\bigcap\{S\subset I,I \text{ is an ideal}\}$. If $S$ is finite, then $(S)$ is called the finitely generated ideal. Specially when $S=\{a\}$, $(a)$ is called the principal ideal that can be expressed explicitly as $\{\sum_{i,j<\infty}r_iar_j+r_ka+ar_l+na,n\in\Z,r_i,r_j,r_k,r_l\in R\}$. If $R$ has $1$ (be a ring), then $(a)=RaR=\{\sum_{i,j<\infty}r_iar_j,r_i,r_j\in R\}$, generally $(S)=RSR$.
+\end{definition}
+$\{0\},R$ are two trivial ideas. Others are called the nontrivial ideas. In a ring $R$, $I=R$ iff $1\in I$, namely $(1)=I$ so as an ideal $R$ is also called the unit ideal. Proper ideals refer to the ideals except $R$.
+
+Before we show the ideals, we denote the quotient rings with $R/I$ that is defined as in Abelian groups where $I$ is an ideal of $R$. Notice that if $R$ is a (commutative) ring then $R/I$ is also a (commutative) ring.
+\begin{definition}[Ideals and their basic properties]
+A proper ideal $I$ is called a maximal ideal if there exists no other proper ideal $J$ with $I$ a proper subset of $J$. The factor ring of a maximal ideal $R/I$ is a simple ring in general and is a field for commutative rings. A nonzero ideal is called minimal if it contains no other nonzero ideal.
+
+Prime ideal: A proper ideal $I$ is called a prime ideal if for any a and b in $R$, if $ab\in I$, then $a\in I$ or $b\in I$. The factor ring of a prime ideal $R/I$ is a prime ring in general and is an integral domain for commutative rings.
+
+Primary ideal: An ideal $I$ is called a primary ideal if for all $a,b\in R$, if $ab \in I$, then at least one of $a\in I$ or $b^n\in I$ for some natural number $n$. Every prime ideal is primary, but not conversely. A semiprime primary ideal is prime.
+
+Irreducible ideal: An ideal is said to be irreducible if it cannot be written as an intersection of ideals which properly contain it. Every prime ideal is irreducible. Every irreducible ideal of a Noetherian ring is a primary ideal, and consequently for Noetherian rings an irreducible decomposition is a primary decomposition. Every primary ideal of a principal ideal domain is an irreducible ideal. Every irreducible ideal is a primal ideal.
+
+Coprime ideals: Two ideals $I,J$ are said to be coprime if $a+b=1$ for some $a\in I,b\in J$.
+
+Nil ideal: An ideal is a nil ideal if each of its elements is nilpotent.
+\end{definition}
+
+\begin{remark}
+Primitive ideal: A left primitive ideal is the annihilator of a simple left module. A right primitive ideal is defined similarly. Actually (despite the name) the left and right primitive ideals are always two-sided ideals. Primitive ideals are prime. A factor rings constructed with a right (left) primitive ideals is a right (left) primitive ring. For commutative rings the primitive ideals are maximal, and so commutative primitive rings are all fields.
+\end{remark}
+
+\textbf{We turn to the commutative rings (with $1$)}. In such rings, the principal ideal $(a)=Ra=aR$. And $(a)\subset(b)$ iff $b\mid a$, $(a)=(b)$ iff $a\sim b$. the facts translate the concepts of number theory to the ring theory. Furthermore, we have the following results.
+\begin{theorem}
+  $(p)$ is prime iff $p$ is prime.
+  $(p)$ is irreducible iff $p$ is irreducible.
+\end{theorem}
+
+The principal ideals of a ring is an opset under $\subset$. Now we define the well-known great common divisor.
+\begin{definition}[Great common divisor]
+ If $(S)=(a)$, then $a$ is the gcd(great common divisor) of $S$.
+\end{definition}
+
+Tabel \ref{tb:cor} shows the correspondence of three types of statements that are employed in different contexts.
+\begin{table}
+\centering
+\caption{The correspondence of three styles of statements}\label{tb:cor}
+\begin{tabular}{c|c|c}
+\hline
+ideal style & number style & set style \\
+\hline
+$(a)\subset(b),a\in(b)$ (properly) & $b\mid a$ (properly) &$b\in D(a)\, (b\in D^*(a))$\\
+$(a,b)=(1)$ & $a,b$ is coprime& $D(\{a,b\})=U(R)$\\
+$(a)=(b)$  & $a\sim b$  &  $D(a)=D(b)$\\
+$(a)=(1),1\in(a)$  & $a\sim 1,a\mid 1$ & $a\in U(R),D(a)=U(R)$\\
+$a\in(0)$  & $a=0$ & $ D(0)=\{0\},0\not\in D(b),b\neq0$\\
+$(S)\subset(a)$  & $a\mid S$ & $a\in D(S)$\\
+$(S)=(a)$  &   & $a$ is the gcd of $S$\\
+\hline
+\end{tabular}
+\end{table}
+
+
+\section{Ring Extension}
+If $R$ is a subring (or a ring isomorphic to a subring) of ring $S$, then $S/R$ denotes the ring extension. In the definition, we can not get something more than subring concept. Howsoever, it indicates that we can study a ring at the position of its sup-ring.
+
+\begin{remark}
+ The ring extension can be regarded as a category denoted with $\Rxt$. The homomorphism $\phi: R/S\to R'/S'$ is the homomorphism $\phi:R\to R'$ that $\phi |_S: S\to S'$ is a homomorphism. When $\phi,\phi|_S$ are both isomorphisms, $\phi$ is the isomorphism of ring extension. Particularly, if an endomorphism (isomorphism) of $R$ that $\phi|_S=\id_S$, then it is called Galois endomorphism (isomorphism). $\Gal(R/S)$ denotes the group of Galois isomorphisms.
+\end{remark}
+
+Before going further, we introduce the following theorem that is a fundamental principle for ring extension. In fact, it indicates the morphism of $\Rxt$.
+\begin{theorem}[Embedding Theory]\label{th:embed}
+If $R$ is a subring of $S$, $(S \setminus R)\cap R'=\emptyset,R\simeq R'$, then there exists $S\simeq S',R'$ is a subring of $S'$. We say $R'$ is embedded into $S$ and $S/R'$ is a ring extension up to isomorphisms.
+\end{theorem}
+\begin{proof}
+Take $S'=(S \setminus R)\cup R'$. It is indeed a ring. Now let
+\[\psi(x)=\left\{\begin{array}{ll}
+                                            \phi(x) & x\in R, \\
+                                            x & x\in S\setminus R.
+                                          \end{array}\right.:S\map S'$ where $\psi:R\simeq R'.\]
+It is easy to check that $\psi:S\simeq S'$. The detail is left for readers.
+\end{proof}
+
+Following is an interesting application.
+\begin{corollary}
+Let $R$ be a commutative ring and let $1\in D$ be a multiplicatively closed subset of $R$ without $0$ or any zero divisors. Define the (total) ring of fractions of $D$ as $D^{-1}R=\{a/p,a\in R,p\in D\}$ where $a/p\sim b/q$ means $qa=pb$. Then $D^{-1}R$ is a ring and an extension of $R$.
+\end{corollary}
+\begin{proof}We denote $\frac{a}{p}\in D^{-1}R$ as usual.
+ Let $S=D^{-1}R$. It is easy to see $R\simeq\{\frac{r}{1},r\in R\}$ is a subring of $S$. We have extension $S/R$.
+\end{proof}
+
+\begin{example}
+ Laurent polynomial $R[x,x^{-1}]=\{x^n, n\in\N\}^{-1}R[x]$.
+\end{example}
+
+Moreover, $D$ regarded as $\{\frac{d}{1},d\in D\}$ consists of units of $S$. Now define $\Frac(R)=D^{-1}R$ where $D=R\setminus\{0\}$ for the domain $R$. $\Frac(R)$ is a field --- the field of fractions with respective to $R$. Fields of fractions are applied in the polynomials. One also see that $\Frac$ is a functor from the category of domains to the category of fields.
+
+\begin{remark}
+Consider the general version --- localization. Let $R$ is a general commutative ring (rng) and $1\in D$ be a multiplicatively closed subset. Denote $S=D\times R/\sim$ where $(a,p)\sim(b,q)$ means there exists $t\in D$ that $t(qa-pb)=0$. We have the universal property: the ring homomorphism $j : R \map S$ maps every element of $S$ to a unit in $S$, and if $f : R \map T$ is some other ring homomorphism which maps every element of $S$ to a unit in $T$, then there exists a unique ring homomorphism $g : S \map T$ such that $f = g j$.
+\end{remark}
+
+\begin{remark}
+  It is easy to define rng extension. In Remark \ref{rm:rng}, $R'/R$ is an example of rng extension.
+\end{remark}
+
+
+\section{Polynomial}
+It is easy to see that ploynomial rings also give ring extension. For the domain extension $S/R$, $a\in S$ is integral over $R$ iff $a$ is a root of $f(x)\in R[x]$ called the annihilation polynomial of $a$ usually. The annihilation polynomials form an ideal of $F[x]$. The set of integral elements over $R$ is a subring of $S$, named integral closure of $R$. If the integral closure of $R$ is $R$ itself, then $R$ is integrally closed.
+
+Keep in mind that we only study the polynomials of commutative rings.
+\begin{theorem}
+ If $R$ is UFD, then so is $R[x]$.
+\end{theorem}
+
+\begin{definition}
+Let $f(x)=\sum_ia_ix^i$, then $c(f)=(\{a_i\})$. If $c(f)=(1)$, then $f$ is named the primitive polynomial.
+\end{definition}
+Actually, the definition is only useful when $R$ is a domain.
+
+\begin{lemma}[Gauss]
+  If $f,g\in R[x]$ are primitive, then $fg$ is primitive, where $R$ is an integral domain.
+\end{lemma}
+
+\section{Comment}
+In rings, an ideal is proper if and only if it does not contain $1$ or equivalently it does not contain a unit.
+The set of ideals of any ring are partially ordered via subset inclusion, in fact they are additionally a complete modular lattice in this order with join operation given by addition of ideals and meet operation given by set intersection. The trivial ideals supply the least and greatest elements: the largest ideal is the entire ring, and the smallest ideal is the zero ideal. The lattice is not, in general, a distributive lattice.
+Unfortunately Zorn's lemma does not necessarily apply to the collection of proper ideals of $R$. However when $R$ has identity $1$, this collection can be reexpressed as ``the collection of ideals which do not contain $1$". It can be checked that Zorn's lemma now applies to this collection, and consequently there are maximal proper ideals of $R$. With a little more work, it can be shown that every proper ideal is contained in a maximal ideal. See Krull's theorem at maximal ideal.
+The ring $R$ can be considered as a left module over itself, and the left ideals of $R$ are then seen as the submodules of this module. Similarly, the right ideals are submodules of $R$ as a right module over itself, and the two-sided ideals are submodules of $R$ as a bimodule over itself. If $R$ is commutative, then all three sorts of module are the same, just as all three sorts of ideal are the same.
+Every ideal is a pseudo-ring.
+The ideals of a ring form a semiring (with identity element $R$) under addition and multiplication of ideals.
+
+
+\section{More Rings}
+\begin{definition}[Rings with endomorphisms or anti-endomorphisms]
+  A ring $R$ with a set $\Phi$ of its endomorphisms or anti-endomorphisms are called the $\Phi-$ring ($\sigma$-ring denotes $\{\sigma\}$-ring). Specially $*$-ring $R^*$ is a ring with an anti-automorphism $*$ called conjugate. Ring* denotes the category of $*$-rings with homomorphisms of rings that $\phi(a^*)=\phi(a)^*, a\in R$.
+\end{definition}
+
+\begin{definition}
+  $\Re a = \frac{a^*+a}{2}$ where $2\neq 0$ in *-ring $R$. $\Her(R)=\{x\in R | x^*=x\}$ which is a subring of $R$ only if $R$ is commutative.
+\end{definition}
+
+\bibliographystyle{unsrturl} % Style BST file
+\bibliography{refer}      % Bibliography file (usually '*.bib' )
+\end{document}

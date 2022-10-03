@@ -1,0 +1,195 @@
+\def\CTeXPreproc{Created by ctex v0.2.13, don't edit!}\def\CTeXPreproc{Created by ctex v0.2.13, don't edit!}
+\documentclass[11pt,a4paper,fleqn]{article}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{indentfirst,latexsym,bm}%可去掉.不知道有什么作用
+\usepackage{amssymb}
+\usepackage{CJK}
+\usepackage{indentfirst}
+\begin{document}
+\begin{CJK}{GBK}{song}
+\newcommand{\Top}{\mathrm{Top}}            % 拓扑空间范畴
+\newcommand{\xs}[1]{\{#1_n\}}              % {x_n}
+\newcommand{\T}{\mathcal{T}}               % 拓 扑(开集)
+\newcommand{\F}{\mathcal{F}}               % 闭 集
+\newcommand{\K}[1]{\mathcal{K}(#1)}        % 紧 集
+\newcommand{\PS}[1]{\mathscr{P}(#1)}       % 幂 集
+\renewcommand{\O}{\mathscr{O}}             % 开集族
+\newcommand{\N}[1]{\mathscr{N}_{#1}}       % 领域系
+\newcommand{\TB}[1]{\mathrm{TB}{(#1)}}     % 领域基
+\newcommand{\B}{\mathscr{B}}               % 某个领域基
+\newcommand{\Ao}[1]{{#1}^\circ}            % 内点
+\newcommand{\ch}[1]{\overline{#1}}         % 集合闭包
+\newcommand{\limit}[2]{#1\rightarrow#2}    % 极限
+\newcommand{\map}{\mathrm{map}}            % 连续函数(谓词)
+\newcommand{\C}{\mathrm{C}}                % 连续函数类
+\renewcommand{\H}{\mathrm{H}}              % 同胚函数类
+\newcommand{\Bij}{\mathrm{Bij}}            % 双射(谓词)
+\renewcommand{\to}{\rightarrow}            % 函数类型中的箭头
+\newcommand{\SG}[1]{\mathrm{SG} #1.}       % SG量词
+\newcommand{\deduct}{\Rightarrow}          % 数学演绎
+
+\newcommand{\iffs}[7][\iff]                % 充要条件
+{\hspace{0.6cm}\[\begin{array}{ll}\mbox{$#2$}&\mbox{$#1#3$}\\&
+\mbox{$#1#4$}\\& \mbox{$#1#5$}\\& \mbox{$#1#6$}\\&
+\mbox{$#1#7.$}\end{array}\]}
+\newcommand{\piecefcn}[4]                  % 分段函数
+{\[ #2=\left\{
+    \begin{array}{ll}
+    f(#1) & #1\in #3 \\
+    0 & #1\in #4\\
+    \end{array}
+\right.
+\]}
+
+\newtheorem{define}{定义}[section]
+\newtheorem{theorem}{定理}[section]
+\newtheorem{fact}{基本事实}[section]
+\newtheorem{lemma}{引理}[section]
+
+\title{拓扑学笔记}
+%\footnotetext
+\author{(理学院应数：宋丛威)}
+
+\maketitle
+\section{拓扑空间基本概念}
+\textbf{$\sharp$ 定义}
+拓扑空间$(X,\T),\T\subseteq\PS{X},X\neq\emptyset$
+\begin{enumerate}
+\item
+$\emptyset, X\in \T$;
+\item
+$A,B\in\T \Rightarrow A\cap B\in\T$;
+\item
+$\T'\subseteq\T \Rightarrow \bigcup\T'\in\T$;
+\end{enumerate}
+
+\textbf{定义}（领域系）
+\begin{eqnarray*}
+& &\N{x}:=\{A\supseteq X| \exists B\in\T. x\in B\subseteq A\};\\
+& &\O_x:=\{A\in\T | x\in A\};\\
+& &\B_x:=\{A\in\B | x\in A\},\B\in\TB{X}.
+\end{eqnarray*}
+
+
+\textbf{定义}（子拓扑空间）
+\begin{eqnarray*}
+& &\T_A:=\{A\cap O| O\in\T\}.
+\end{eqnarray*}
+
+\textbf{定义}（拓扑基1）
+\begin{eqnarray*}
+&\TB{X}&:=\{\B\subseteq \PS{X}| X=\bigcup\B \bigwedge \forall A,B\in\B\forall x\in A\cap B.\exists C\in\T. x\in C \subseteq A\cap B\};\\
+& &=\{\B\subseteq \PS{X}|X=\bigcup\B \bigwedge \forall A,B\in\B.
+A\cap B\in(\B)\}.
+\end{eqnarray*}
+
+\textbf{定义}（生成拓扑）$\B\subseteq \PS{X}$
+\begin{eqnarray*}
+&(\B)&:=\{A\subseteq X|\exists\B'\subseteq\B.\bigwedge A=\bigcup\B'\};\\
+& &=\{\bigcup\B'|\B'\subseteq\B\}=\{A\subseteq X|\forall x\in A
+\exists B\in\B. x\in\B\subseteq A\}.
+\end{eqnarray*}
+
+\textbf{基本事实}（拓扑基2）$\B\subseteq \PS{X}$
+\begin{eqnarray*}
+& &(X,(\B)):\Top\iff\B\in\TB{X};\\
+& &(X,\T):\Top\Rightarrow\T=(\T)\in\TB{X};
+\end{eqnarray*}
+定义$\TB{\T}:=\{\B\in\TB{X}|(\B)=\T\}.$
+
+\textbf{定义}（基本点集与极限）$X$
+\begin{eqnarray*}
+& &\Ao{A}:=\{x\in X|\exists U\in\N{x}.U\subseteq A\};\\
+& &A':=\{x\in X|\forall U\in\N{x}.(U\setminus\{x\})\cap A\neq\emptyset\};\\
+& &\overline{A}:=\{x\in X|\forall U\in\N{x}.U\cap A\neq\emptyset\};\\
+& &\partial{A}:=\{x\in X|\forall U\in\N{x}.U\cap
+A\neq\emptyset\bigwedge U\setminus A\neq\emptyset\};\\
+& &x_n\rightarrow x \Leftrightarrow \forall U\in\N{x}.\SG{n}x_n\in
+U.
+\end{eqnarray*}
+
+\textbf{基本事实}$(\B)=\T$; 基本点集都可以在$\B$之上定义。\\
+\begin{eqnarray*}
+& &\pi(\overline{A}:\Ao{A},\partial{A}); \pi(X:\Ao{A},\partial{A},\Ao{A^c});\overline{A}=A\cup A'=A\cup\partial{A};\partial{A}=\partial{A^c};\\
+& &A\in\T \Leftrightarrow A=\Ao{A}; A\in\F \Leftrightarrow A=\overline{A};\\
+& &(X,\T):\Top\Rightarrow\T=(\T)\in\TB{X};\\
+& &(A\cup B)'=A'\cup B',\Ao{(A\cap
+B)}=\Ao{A}\cap\Ao{B},\overline{(A\cup
+B)}=\overline{A}\cup\overline{B}; \\
+& &x_n\rightarrow x \deduct x\in \ch{A}.
+\end{eqnarray*}
+
+
+\section{连续函数}
+
+\textbf{定义}设拓扑空间$(X,\T_1),(Y,\T_2); f:X\to Y$
+\begin{eqnarray*}
+& &\map(f,x):= \forall V\in\N{f(x)}.\exists U\in\N{x}.f[U]\subseteq V \hspace{4mm}(U\subseteq f^{-1}[V]);\\
+& &\C(X,Y):=\{f:X\to Y|\forall x\in X.\map(f,x)\};\\
+& &\H(X,Y):=\{f:X\to Y|\Bij(f,X,Y); f\in\C(X,Y);
+f^{-1}\in\C(Y,X)\};\\
+& & X\simeq Y := \exists f. \H(f,X,Y).
+\end{eqnarray*}
+
+\textbf{缩写}$\C(X)=\C(X,\mathbb{C}); \Omega(X)=\C([0,1],X)$.\\
+
+\textbf{连续函数基本定理}  设拓扑空间$(X,\T_1),(Y,\T_2)$;\\
+\iffs{f\in\C(X,Y)}{\forall A\in\T_2\deduct f^{-1}[A]\in\T_1}
+{\forall A\in\F_2\deduct f^{-1}[A]\in\F_1} {\forall A\in\B_2\deduct
+f^{-1}[A]\in\T_1} {\forall A\subseteq X.f[\ch{A}]\subseteq\ch{f[A]}}
+{\forall B\subseteq Y.\ch{f^{-1}[B]}\subseteq f^{-1}[\ch{B}]}
+$\hspace{3.5cm}\iff \forall \limit{x_n}{x} \deduct
+\limit{f(x_n)}{f(x)}.\\
+\hspace{3.5cm}\deduct \forall A\subseteq\K{X}\rightarrow
+f[A]\in\K{Y}$. \\
+通常谈论的拓扑空间上的映射就是连续函数，直接记为$f:X\to Y$。
+
+\section{商拓扑}
+满（普通的）映射$f:X\to Y(Y$只是一个集合，没有拓扑）\\
+\textbf{定义3}（商拓扑的定义1）设拓扑空间$(X,\T)$
+\begin{eqnarray*}
+& &\T_1:=\{A\subseteq Y| f^{-1}[A]\in\T\}.
+\end{eqnarray*}
+$(Y,\T_1)$就是商空间。自然映射(粘合映射)$\pi:X \to X/\thicksim$是
+满映射。商映射则是赋予商拓扑之后的自然映射；粘合映射的商空间被称为粘合空间。（作为映射，两者是没有区别的，只是后者和拓扑始终联系在一起。也就是说，两者只是在不同语境下的同一个数学概念）接着可以论证该拓扑的极大性。
+
+\begin{fact}[拆解公式1]
+粘合映射$p:X\to X/\thicksim$,\\
+\begin{eqnarray*}
+& &p^{-1}[\mathscr{A}]=\bigcup \mathscr{A};
+\mathscr{A}=p^{-1}[\mathscr{A}]/\thicksim.
+\end{eqnarray*}
+\end{fact}
+
+\begin{define}[诱导粘合]
+拓扑空间上的满映射$f:X\to Y, x\thicksim y =df f(x)=f(y)$\\
+\begin{eqnarray*}
+& &X/f:=X/\thicksim; p:X\to X/f.\\
+& &\tilde{f}:=\lambda[x]:X/f.f(x):X/f\simeq Y
+\end{eqnarray*}
+\end{define}
+
+\begin{theorem}[拆解公式2]
+满映射$f:X\to Y,$诱导粘合$p$\\
+\begin{eqnarray*}
+& &f=\tilde{f}p; pf^{-1}[\mathscr{A}]=\tilde{f}^{-1}[\mathscr{A}]\\
+& &f^{-1}[\mathscr{A}]=\bigcup \tilde{f}^{-1}[\mathscr{A}];
+\tilde{f}^{-1}[\mathscr{A}]=f^{-1}[\mathscr{A}]/\thicksim. \\
+& &\tilde{g}: X/f\to Y\iff \tilde{g}p:X\to Y
+\end{eqnarray*}
+\end{theorem}
+
+
+ \section{结语}
+
+
+ \renewcommand{\refname}{\small{参考文献}}
+ \begin{thebibliography}{999}
+
+\end{thebibliography}
+
+
+\end{CJK}
+\end{document}%结束文章

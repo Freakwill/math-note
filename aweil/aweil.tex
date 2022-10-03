@@ -1,0 +1,127 @@
+\documentclass[11pt,a4paper,fleqn]{article}
+\usepackage{mathrsfs,amsfonts,amsmath,amssymb}
+\usepackage{indentfirst,latexsym,enumerate}%可去掉.不知道有什么作用
+\usepackage{analysis}
+\usepackage{indentfirst}
+
+\newcommand{\Top}{\mathrm{Top}}            % 拓扑空间范畴
+\newcommand{\xs}[1]{\{#1_n\}}              % {x_n}
+\newcommand{\T}{\mathcal{T}}               % 拓 扑(开集)
+\newcommand{\K}[1]{\mathcal{K}(#1)}        % 紧 集
+\newcommand{\PS}[1]{\mathscr{P}(#1)}       % 幂 集
+\renewcommand{\O}{\mathscr{O}}             % 开集族
+\newcommand{\TB}[1]{\mathrm{TB}{(#1)}}     % 领域基
+\newcommand{\B}{\mathscr{B}}               % 某个领域基
+\newcommand{\Ao}[1]{{#1}^\circ}            % 内点
+\newcommand{\ch}[1]{\overline{#1}}         % 集合闭包
+\newcommand{\limit}[2]{#1\rightarrow#2}    % 极限
+\newcommand{\map}{\mathrm{map}}            % 连续函数(谓词)
+\renewcommand{\H}{\mathrm{H}}              % 同胚函数类
+\newcommand{\Bij}{\mathrm{Bij}}            % 双射(谓词)
+\renewcommand{\to}{\rightarrow}            % 函数类型中的箭头
+\newcommand{\SG}[1]{\mathrm{SG} #1.}       % SG量词
+\newcommand{\deduct}{\Rightarrow}          % 数学演绎
+
+\newcommand{\iffs}[7][\iff]                % 充要条件
+{\hspace{0.6cm}\[\begin{array}{ll}\mbox{$#2$}&\mbox{$#1#3$}\\&
+\mbox{$#1#4$}\\& \mbox{$#1#5$}\\& \mbox{$#1#6$}\\&
+\mbox{$#1#7.$}\end{array}\]}
+\newcommand{\piecefcn}[4]                  % 分段函数
+{\[ #2=\left\{
+    \begin{array}{ll}
+    f(#1) & #1\in #3 \\
+    0 & #1\in #4\\
+    \end{array}
+\right.
+\]}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{remark}{Remark}[section]
+
+
+\begin{document}
+
+\title{Note of A. Weil Theorem}
+%\footnotetext
+\author{William}
+
+\maketitle
+\section{Basic Facts}
+\begin{definition}
+subgroup $\Gamma$ is concrete subgroup of $G$, if there exists a neighbourhood $U$ of $1$ such that for all $a\neq 1\in\Gamma$, $Ua\cap U=\emptyset$, equivalently $U^{-1}U\cap\Gamma=U\cap\Gamma=\{1\}$.
+\end{definition}
+
+\begin{lemma}
+If $U$ is a separating neighbourhood, $\pi$ is the nature mapping, then $\pi$ is inject on $xU$, namely $\pi|_{xU}:xU \oto \pi[xU]$.
+If for all $x\in X\subset G$ that $X\cap x\Gamma=\{x\}$, then $\sum_{\gamma\in\Gamma}\chi_{x\gamma}=1$
+\end{lemma}
+
+
+\begin{theorem}
+  $1\in X$ is a measurable subset of $G$, $\pi|_X:X\oto G/\Gamma$. We have
+  \[\intm{f}{G}{\nu}=\intm{\sum_{\gamma\in\Gamma} f(x \gamma)}{G/\Gamma}{x^\circ}=\intm{\sum_{\gamma\in\Gamma} f(x \gamma)}{X}{\nu}.\]
+\end{theorem}
+
+Notice that
+\begin{align*}
+  \sum_{\gamma\in\Gamma} \chi_X(x \gamma)&=\left\{\begin{array}{ll}
+                                                   1, & x\in X, \\
+                                                   0, & x\not\in X
+                                                 \end{array}
+  \right.\\
+   X\cap x \Gamma&=\left\{\begin{array}{ll}
+                                                   \{x\}, & x\in X, \\
+                                                   \emptyset, & x\not\in X
+                                                 \end{array}
+  \right.
+\end{align*}
+
+$\nu$ is an A. Weil measure: $\nu(X)=1$.
+
+\section{Weil Theorem}
+Assume that $M$ is a locally compact space and $G$ is a locally compact group acting on $M$, and $M$ is $G$-homogeneous space.
+
+\begin{definition}
+  $G$ is purely noncontinuous, if for all $x\in M$, there exists the neighbourhood $V$ of $x$ for all $g\neq 1$, $V\cap g V=\emptyset$. It implies that $V\cap G x=\{x\}$.
+\end{definition}
+
+\begin{lemma}
+  We have the map $f^\circ(\pi(x))=\intm{f(ax)}{G}{a}:C_C(M)\to C_C(M/G)$
+\end{lemma}
+
+
+\begin{lemma}
+There exists $f\in C_C(M)$ such that $\intm{f(ax)}{G}{a}=1$ for all $x\in K$ where $K$ is any compact subset of $G$.
+\end{lemma}
+
+\begin{lemma}
+For all $f\in C_C(M)$ there exists $g\in C_C(M)$ such that $f=fg^\circ$.
+\end{lemma}
+
+\begin{remark}
+ Assume that $K\subset U$ where $K$ and $U$ are compact subset and pre-compact subset of $M$ respectively. We have $K\prec g\prec U,g\in C_C(M)$.
+ Extent $f=\left\{\begin{array}{ccc}
+                 \frac{g(x)}{g^\circ(x)}, & x\in GK, \\
+                 \cdots, & \text{else} \\
+               \end{array}
+ \right.$ to $M$ continuously.
+\end{remark}
+
+\begin{theorem}[A. Weil Theorem]We have
+  \begin{enumerate}[i)]
+    \item
+    $\nu$ is a $\Delta$-relatively invariant measure iff $d\nu=\Delta d\mu$
+    \item
+    $\Delta^{r}_{\nu}=\Delta^l_{\nu}\Delta_{M,G}$
+    \item
+    There exists $\mu$, a $\Delta$-relatively invariant measure iff $\Delta^{r}_{G}=\Delta\Delta^r_{M,G}$
+    \item
+    $\intm{f(x)}{M}{x}=\intm{}{M/G}{\mu}\intm{f(gx)}{G}{g}$
+    \item
+    $\intm{f(x)}{M/H}{x}=\intm{}{M/G}{\mu}\intm{f(gx)}{G/H}{g}$ for all subgroup $H$ of $G$.
+  \end{enumerate}
+\end{theorem}
+\end{document}%结束文章

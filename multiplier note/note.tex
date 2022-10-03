@@ -1,0 +1,144 @@
+\def\CTeXPreproc{Created by ctex v0.2.13, don't edit!}
+\documentclass[11pt,a4paper,fleqn]{article}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{harmonic,analysis}%mypackage
+\usepackage{amssymb}
+\usepackage{eepic,epic}
+\usepackage{enumerate}
+\usepackage{graphicx,subfigure,float}
+\usepackage{fancyhdr,times}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+%\usepackage{cite}
+\usepackage[numbers,sort&compress]{natbib}
+
+\hypersetup{
+   colorlinks=true,%
+   citecolor=green,%
+   filecolor=black,%
+   linkcolor=black,%
+   urlcolor=blue
+} % 打印的时候注释
+
+\begin{document}
+
+\renewcommand{\S}{\mathscr{S}}                       % {x_n}
+\renewcommand{\d}{\mathrm{d}}                          %
+\renewcommand{\i}{\mathrm{i}}                          %
+\renewcommand{\l}{\ell^1}
+\newcommand{\ei}[1]{\mathrm{e}^{\mathrm{i}#1}}
+\newcommand{\e}[1]{\mathrm{e}^{2\pi\mathrm{i}#1}}
+\newcommand{\ec}[1]{\mathrm{e}^{-2\pi\mathrm{i}#1}}              %
+\newcommand{\Mx}[2]{M^{s}_{p,q}}                         % 建议使用
+\newcommand{\biggnorm}[1]{\bigg\|#1\bigg\|}                    %%norm
+%\newcommand{\bignorm}[1]{\big\|#1\big\|}                                    %
+\renewcommand{\M}{\mathcal{M}}   
+\newcommand{\D}{\mathcal{D}}                             %
+\renewcommand{\MM}{\mathfrak{M}}
+
+\newenvironment{proof}{\emph{Proof.}\hspace{0.5cm}}{$\hspace{0.4cm}\Box$\\}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+
+%\footnotetext
+\bibliographystyle{plain}  % 按插入顺序排列
+
+
+\title{Note for Fourier Multipliers}
+\date{}
+\author{S. William}
+\maketitle
+
+\section{Lemmata of Inequality}
+\begin{lemma}Assume $f\in \h{m,p}(\R^n)$,
+\[\norm{\diff^m_{h}f}_{L^p} \lesssim |h|^m\norm{f}_{\h{m,p}}.\]
+\end{lemma}
+\begin{proof}Take case $m=1$ for example.
+  Set an auxiliary function
+  \[F(t)=\frac{\d f(x+th)}{\d t}=\nabla f(x+th)\cdot h\]
+  for any $x,h\in\R^n$. We complete the proof, integrating $F$ form 0 to 1.
+\end{proof}
+The lemma bridges difference and  differential calculus (see Miao's book and \cite{triebel}). It appears in the proof of the equivalency of the norms of the function spaces.
+
+Sequence space $\ell^{s,q}$ is defined as $\{\norm{a}=(\sum_k\jb{k}^{sq}|a_k|^q)^{\inv{q}}<\infty\}$ in the context of modulation spaces.
+\begin{lemma}(see \cite{tomita})for any $R>0$,
+\[(\int_{|x|>R}{|K|^p})^{\inv{p}}\lesssim\jb{R}^{-s}\norm{K}_{W(L^p,\ell^{s,1})},s\geq0.\]
+\end{lemma}
+\begin{proof}
+Let $\Delta_k=\supp\phi_k$ and $B_R$ is the ball with radius $R$ about the origin.
+Obviously $\Delta_k\cap B_R\neq\emptyset$ implies $|k|>\frac{R}{2}$ for large $R$. Thus
+  \begin{eqnarray}
+    (\intm{|K|^p}{|x|>R}{x})^{\inv{p}}&\leq&\sum_k(\intm{|\phi(x-k)K(x)|^p}{|x|>R}{x})^{\inv{p}}\nonumber\\
+    &\lesssim&\sum_{|k|>R/2}\norm{\phi_k(x)K(x)}_p\label{key}\\
+    &=&\sum_{|k|>R/2}\jb{k}^{-s}\jb{k}^{s}\norm{\phi_k(x)K(x)}_p\nonumber\\
+    &\lesssim&\jb{R}^{-s}\sum_{k}\jb{k}^{s}\norm{\phi_k(x)K(x)}_p\nonumber\\
+    &=&\jb{R}^{-s}\norm{K}_{W(L^p,\ell^{s,1})}.\nonumber
+  \end{eqnarray}
+  Since
+  \begin{eqnarray}\label{W}
+  &&W(L^p,\ell^1)\embed L^p,
+  \end{eqnarray}
+  for finite $R$ bounded by a certain constant,
+  \begin{eqnarray*}
+    (\intm{|K|^p}{|x|>R}{x})^{\inv{p}}&\leq&\norm{K}_p\\%   &\lesssim&\sum_{k}\norm{\phi_kK}_p\\
+    &\leq&\norm{K}_{W(L^p,\ell^{1})}.
+  \end{eqnarray*}
+ Since $W(L^p,\ell^{s,1})\embed W(L^p,\ell^1)$, we complete the proof.
+\end{proof}
+\begin{remark}
+One of more general forms of (\ref{W}) is
+\[W(X,\ell^1)\embed X,\]
+where $X$ is Banach function space.
+\end{remark}
+\begin{remark}$X^{s,p}$ denotes the function space with the norm
+\[\sup_{R>0}\jb{R}^s(\int_{|x|>R}{|K|^p})^{\inv{p}},s\geq 0,\]
+that is extremely like Murrey spaces. We have
+\[W(L^p,\ell^{s,1})\embed X^{s,p}.\]
+\end{remark}
+\begin{remark}The key of the proof is (\ref{key}). It is true for any unitary partition consisting of compactly supported functions $\{\psi_k\}$ and the distances between supports $\Delta_k=\supp \psi_k$ and the origin tents to infinity as $|k|\rightarrow\infty$.
+\end{remark}
+
+\begin{corollary}
+  \[M^s_{2,1}\embed \F X^{s,1}.\]
+\end{corollary}
+
+With same method, for diadic decomposition (see \cite{triebel}) we have
+\begin{lemma}for any $r>0$,
+\[(\int_{|x|>2^r}{|K|^p})^{\inv{p}}\lesssim 2^{-rs}\norm{K}_{W(L^p,\ell^{s,1})},s\geq0.\]
+\end{lemma}
+\begin{remark}
+In the fact, it is just \[W(L^p,\ell^{s,1})\embed X^{s,p},\]
+where $\ell^{s,q}$ is the sequence space with norm $(\sum_k2^{ksq}|a_k|^q)^{\inv{q}}$.
+\end{remark}
+\begin{corollary}
+  \[\dot{B}_{2,1}^{s}\embed \F X^{s,1}.\]
+\end{corollary}
+
+\begin{fact}
+ $\MM^1=\F M_{1,\infty}\embed \MM^p \embed \F M_{p,\infty}$.
+\end{fact}
+Notice $\MM^p=W(\mathcal{M}^p,\ell^{\infty})$. (see \cite{miyachi})
+
+\begin{fact}
+ $1\in M^{s}_{\infty,1},\F M_{1,\infty}$.
+\end{fact}
+
+\section{representation of Multipliers}
+$\mathcal{D}(X,Y)$ represents the spaces of bounded operators $Tf(x)=d(x)f(x):X\rightarrow Y$, so $\mathcal{D}(X,Y)=\mathcal{M}(\F X,\F Y)$.
+\begin{theorem}If $q_1\leq q_2$, then
+  \[\mathcal{M}(M(X_1,\ell^{s_1,q_1}),M(X_2,\ell^{s_2,q_2}))= W(\mathcal{M}(X_1,X_2),\ell^{s_2-s_1,\infty})\]
+  where $\norm{\psi_k f}_{X_i}\lesssim\norm{f}_{X_i}$.
+Similarly,
+  \[\mathcal{D}(W(X_1,\ell^{s_1,q_1}),W(X_2,\ell^{s_2,q_2}))= W(\mathcal{D}(X_1,X_2),\ell^{s_2-s_1,\infty}),\]
+  where $X_1,X_2$ are solid.
+\end{theorem}
+
+\bibliography{multiplier}
+\end{document}
