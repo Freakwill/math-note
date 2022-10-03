@@ -25,7 +25,7 @@ $f\in C(X)\iff f\in UC(X)$ where $X$ is a compact uniform space.
 ### Bernstein Theorem
 $M\leq N,N\leq M \to M=N$.
 
-*Proof1.* construct "Berstein chain".
+*Proof1.* construct "Berstein chain". $M\to N_1\to M_1\to N_2\cdots$
 
 *Proof2.* let $\mathcal{A}=\{A\subset M| g[N\setminus f[A]]\subset M\setminus A\}$ and $F=\bigcup\mathcal{A}$. $\phi:A\mapsto M\setminus g[N\setminus f[A]]$. We have $\phi(F)=F$.
 
