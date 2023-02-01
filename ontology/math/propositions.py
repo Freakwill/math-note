@@ -128,12 +128,12 @@ with math.Relm('Functional Analysis'):
     banachExtensionTheorem.Prove = [hahnBanachExtensionTheorem]
 
     banachSteinhausConvergenceTheorem = math.Theorem(title='Banach-Steinhaus Convergence Theorem') \
-    @ '''X: LNS, Y: Banach, M: X complete, Tn, T: L(X,Y)
+    @ '''X: LNS, Y: Banach, M: X dense(fundamental), Tn, T: L(X,Y)
     i) {Tn} bounded
     ii) Tnx -> Tx, x in M (s)
     => Tn -> T (norm)
     ''' \
-    ^ """X: LNS, M: X complete, fn, f: X*
+    ^ """X: LNS, M: X dense(fundamental), fn, f: X*
     i) {fn} bounded
     ii) fnx -> fx, x in M (s)
     => fn -> f (norm)

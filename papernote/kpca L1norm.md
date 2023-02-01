@@ -9,7 +9,7 @@ $$
 st.\|x\|=1
 \end{cases}
 $$
-
+dual problem:
 $$
 \begin{cases}
 \min \|x\|\\

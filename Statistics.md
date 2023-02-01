@@ -420,12 +420,14 @@ $\hat{x}$ is any estimator of $x$ based on samples $X$,
 $$
 err(\hat{x},X)=err(\hat{x}(X))\\
 err(\hat{x})=E_X err(\hat{x}(X))=E_X E_x(x- \hat{x}(X))^2\\
-err(x^*)=E_x(x-x^*)^2\\
+err(x^*)=E_x(x-x^*)^2=var x\\
 bias(\hat{x}) := (x^*-E\hat{x}(X))^2\\
 Var(\hat{x}):=E(\hat{x}(X)-\hat{x}_A)^2\\
 err(\hat{x}) = bias(\hat{x}) + Var(\hat{x}) + err(x^*)
 $$
 
+for constant estimator,
+$err(\hat{x}) = bias(\hat{x}) + err(x^*)$
 
 ### Discrete case (X is a drv)
 
@@ -442,4 +444,10 @@ err(x^*)=1-P(x^*)\\
 bias(\hat{x}):= err(\hat{x}_A) - err(x^*)=P(x^*)-\max_x P_X(\hat{x}(X)=x)\\
 Var(\hat{x}):=err(\hat{x})-err(\hat{x}_A)\\
 err(\hat{x}) = bias(\hat{x}) + Var(\hat{x}) + err(x^*)
+$$
+
+for constant estimator,
+$$
+err(\hat{x}) = bias(\hat{x}) + err(x^*)
+= (P(X=x^*)-P(X=\hat{x})) + P(X\neq x^*)
 $$

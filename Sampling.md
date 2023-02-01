@@ -4,11 +4,11 @@
 
 1. $H$: Hilbert space
 
-2. $M$: diff manifold (i.e. a domain of $\C$)
+2. $M$: diff manifold (i.e. a domain of $\mathbb{C}$)
 
 3. $k:M\to H$, kernel function
 
-4. $T_k(u)=\lambda z. \langle u, k(z)\rangle: H\to C^\infty(M)$.
+4. $T_k(u)= z\mapsto \langle u, k(z)\rangle: H\to C^\infty(M)$.
 
 5. $\mathscr{H}_k= ran T_k $ : RKHS.
 
